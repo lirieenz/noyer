@@ -72,16 +72,6 @@
     const recipientKey = getQueryParam('to');
     const fullLetter = letters[recipientKey] || "hapi no yer";
 
-    function playClickSound() {
-      const clickSound = document.getElementById('click-sound');
-      clickSound.currentTime = 0;
-      clickSound.play().catch(e => console.log("Audio play failed:", e));
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      const clickableElements = document.querySelectorAll('button, .music-control');
-      clickableElements.forEach(element => { element.addEventListener('click', playClickSound); });
-    });
-
     function goToPage(pageNum) {
       const pages = document.querySelectorAll('.page');
       pages.forEach(p => p.classList.remove('active'));
@@ -89,11 +79,6 @@
       next.classList.add('active');
 
       if (pageNum === 3) {
-        const music = document.getElementById("bg-music");
-        music.muted = false;
-        music.play().catch(e => console.log("Autoplay blocked:", e));
-        document.getElementById("musicControl").textContent = "🔊";
-
         confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
         typeText(fullLetter, document.getElementById('letterText'), 25);
         startFallingSymbols();
