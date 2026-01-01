@@ -71,7 +71,7 @@
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get(param);
     }
-    const recipientKey = getQueryParam('to');
+    const recipientKey = getQueryParam('to')?.toLowerCase().trim();
     const fullLetter = letters[recipientKey] || "hapi no yer";
 
     function goToPage(pageNum) {
