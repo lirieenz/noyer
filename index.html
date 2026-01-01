@@ -151,8 +151,11 @@ const letters = {
     const fullLetter = letters[recipientKey] || "hapi no yer";
 
     function goToPage(pageNum) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById(`page${pageNum}`).classList.add('active');
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(p => p.classList.remove('active'));
+
+      const next = document.getElementById(`page${pageNum}`);
+      next.classList.add('active');
 
       if (pageNum === 3) {
         confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
